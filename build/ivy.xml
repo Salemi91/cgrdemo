@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ivy-module version="2.0" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info
+        organisation="cgr-demo"
+        module="cgr-demo"
+        status="release">
+	</info>
+	<configurations>
+		<conf name="default" description="default library list required to compile artifact"/>
+		<conf name="runtime" description="libraries that are required to be embedded in resulting artifact"/>
+		<conf name="test" description="run tests and generate style checking" />
+	</configurations>
+	<dependencies>
+           
+            <dependency org="org.apache.tomcat" name="servlet-api" rev="6.0.33"
+                   conf="default" transitive="false" />
+                   
+           <!-- ognl -->
+           <dependency org="ognl" name="ognl" rev="3.0.5"
+                   conf="default,runtime->default" transitive="false" />
+                   
+           <!-- thymeleaf -->
+           <dependency org="org.thymeleaf" name="thymeleaf" rev="${org.thymeleaf.version}"
+                   conf="default,runtime->default"  transitive="false" />
+                   
+           <dependency org="org.thymeleaf" name="thymeleaf-spring3" rev="${org.thymeleaf.version}"
+           conf="default,runtime->default"  transitive="false" />
+           
+           <dependency org="nz.net.ultraq.web.thymeleaf" name="thymeleaf-layout-dialect" rev="1.0.4"
+           conf="default,runtime->default"  transitive="false" />
+		                   
+		   <!-- Spring -->
+           <dependency org="org.springframework" name="spring-jdbc"
+                   rev="${org.springframework.version}" transitive="false">
+                   <artifact name="spring-jdbc" conf="default,runtime->default" />
+           </dependency>
+
+           <dependency org="org.springframework" name="spring-tx"
+                   rev="${org.springframework.version}" transitive="false">
+                   <artifact name="spring-tx" conf="default,runtime->default" />
+           </dependency>
+
+           <dependency org="org.springframework" name="spring-context"
+                   rev="${org.springframework.version}" transitive="false">
+                   <artifact name="spring-context" conf="default,runtime->default" />
+           </dependency>
+
+           <dependency org="org.springframework" name="spring-core"
+                   rev="${org.springframework.version}" transitive="false">
+                   <artifact name="spring-core" conf="default,runtime->default" />
+           </dependency>
+
+           <dependency org="org.springframework" name="spring-beans"
+                   rev="${org.springframework.version}" transitive="false">
+                   <artifact name="spring-beans" conf="default,runtime->default" />
+           </dependency>
+
+           <dependency org="org.springframework" name="spring-web"
+                   rev="${org.springframework.version}" transitive="false">
+                   <artifact name="spring-web" conf="default,runtime->default" />
+           </dependency>
+           
+           <dependency org="org.springframework" name="spring-webmvc"
+                   rev="${org.springframework.version}" transitive="false">
+                   <artifact name="spring-webmvc" conf="default,runtime->default" />
+           </dependency>
+
+           <dependency org="org.springframework" name="spring-expression"
+                   rev="${org.springframework.version}" transitive="false">
+                   <artifact name="spring-expression" conf="default,runtime->default" />
+           </dependency>
+
+ 		
+			<!-- Aop -->
+           <dependency org="org.springframework" name="spring-aop"
+                   rev="${org.springframework.version}" transitive="true">
+                   <artifact name="spring-aop" conf="default,runtime->default" />
+                   <exclude org="commons-logging" module="commons-logging"
+                           conf="default,runtime->default" />
+           </dependency>
+		
+	</dependencies> 
+</ivy-module>

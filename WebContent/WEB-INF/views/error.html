@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="/layouts/layout">
+<head>
+	<title>Sistema de Archivos de Actividades de Control</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="error-message" th:text="${beans.systemInfo.errorMessage}"></div>
+		<div class="main-img">
+			<img alt="CGR" src="/images/logo/dna_logo.png" th:src="@{/images/logo/dna_logo.png}" />
+		</div>
+	</section>
+</body>
+</html>

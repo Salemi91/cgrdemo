@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  	xmlns:th="http://www.thymeleaf.org"
+  	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+	<head>
+         <meta charset="UTF-8"/>
+         <title>Demo Thymeleaf</title>
+         <meta name="description" content="Spring thymeleaf html5 demo"/>
+         <meta name="author" content="nerevar"/>
+ 
+         <link rel="stylesheet" type="text/css" media="all" href="/css/style.css" th:href="@{/css/style.css}"/>
+
+ 	</head>
+	<body>
+		<header class="header">
+			<div class="header-text">
+				<h1>
+					<a href="/demo" class="logo">
+						Demo Thymeleaf
+					</a>
+				</h1>
+			</div>
+		</header>
+		<div id="Topbar" th:include="topbar :: topbar">
+	  	</div>
+		<section layout:fragment="content" class="content">
+		</section>
+		<footer class="footer">
+		</footer>
+	</body>
+</html>

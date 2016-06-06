@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="/layouts/layout">
+<head>
+<meta charset="utf-8" />
+<title>Demo Thymeleaf</title>
+</head>
+<body>
+<section layout:fragment="content">
+	<form id="personForm" th:object="${formComponent}" class="custom-form" th:action="@{'/personas/agregar'}" th:method="@{'POST'}">
+		<div id="PersonasOutput">
+			<h1 th:text="@{'Formulario Persona'}" class="form-h1">Formulario Persona</h1>
+				<div class="grids form">
+					<div>
+						<div class="table-row">
+							<div class="table-cell">
+								<label class="table-cell" for="ciInput">
+									<span>CI:</span>
+								</label>
+							</div>
+							<div class="table-cell">
+								<input type="text" value="" th:field="*{person.ci}" id="ciInput"/>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="table-cell">
+								<label class="table-cell" for="nameInput">
+									<span>Nombres:</span>
+								</label>
+							</div>
+							<div class="table-cell">
+								<input type="text" value="" th:field="*{person.name}" id="nameInput"/>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="table-cell">
+								<label class="table-cell" for="lastnameInput">
+									<span>Apellidos:</span>
+								</label>
+							</div>
+							<div class="table-cell">
+								<input type="text" value="" th:field="*{person.lastname}" id="lastnameInput"/>
+							</div>
+						</div>
+<!-- 						<div class="table-row"> -->
+<!-- 							<div class="table-cell"> -->
+<!-- 								<label class="table-cell" for="fechaNac"> -->
+<!-- 									<span>Fecha de nacimiento:</span> -->
+<!-- 								</label> -->
+<!-- 							</div> -->
+<!-- 							<div class="table-cell"> -->
+<!-- 								<input id="fechaNac" class="datepicker" type="text" value="" th:field="*{person.birthday}"/> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+					</div>
+					<div>
+						<div class="table-row">
+							<div class="table-cell">
+								<label class="table-cell" for="phoneInput">
+									<span>Telefono:</span>
+								</label>
+							</div>
+							<div class="table-cell">
+								<input type="tel" value="" th:field="*{person.phonenumber}" id="phoneInput"/>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="table-cell">
+								<label class="table-cell" for="emailInput">
+									<span>Email:</span>
+								</label>
+							</div>
+							<div class="table-cell">
+								<input type="email" value="" th:field="*{person.email}" id="emailInput"/>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="table-cell">
+								<label class="table-cell" for="urlInput">
+									<span>URL:</span>
+								</label>
+							</div>
+							<div class="table-cell">
+								<input type="url" value="" th:field="*{person.url}" id="emailInput" placeholder="Ingrese la URL de su página web personal"/>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="table-cell">
+								<label class="table-cell" for="submitButton">
+									<span></span>
+								</label>
+							</div>
+							<div class="table-cell">
+								<input type="submit" value="Guardar" class="button-right" style="width: 200px;"/>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+<!-- 				<div class="button-panel"> -->
+<!-- 					<input type="submit" value="Guardar" class="button-right"/> -->
+<!-- 				</div> -->
+		</div>
+		<div id="ListaPersonasContainer"> <!-- class="dataTables_wrapper" -->
+			<table id="rounded-corner" class="dataTable"> <!-- class="dataTable" -->
+				<thead>
+					<tr>
+						<th th:text="@{'CI'}"></th>
+						<th th:text="@{'Nombres'}"></th>
+						<th th:text="@{'Apellidos'}"></th>
+						<th th:text="@{'Telefono'}"></th>
+						<th th:text="@{'Email'}"></th>
+						<th th:text="@{'URL'}"></th>
+						<th th:text="@{'Operaciones'}"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="odd">
+						<td class="dataTables_empty" valign="top" colspan="7" th:if="${#lists.isEmpty(formComponent.people)}">No se encontraron Datos!</td>
+					</tr>
+					<tr th:each="p, rowStat : ${formComponent.people}">
+						<td th:text="${p.ci}"></td>
+						<td th:text="${p.name}"></td>
+						<td th:text="${p.lastname}"></td>
+						<td th:text="${p.phonenumber}"></td>
+						<td th:text="${p.email}"></td>
+						<td th:text="${p.url}"></td>
+						<td align="center" width="10%">
+							<a th:href="@{'/personas/eliminar/' + ${rowStat.index}}">
+								Eliminar
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</form>
+</section>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="/layouts/layout">
+<head>
+	<title>Demo Thymeleaf</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="main-title">Welcome to Thymeleaf!</div>
+		<div class="main-img">
+			<a th:href="@{/personas}">
+				<img alt="SIGUIENTE" src="/images/modules/next_small.png" th:src="@{/images/modules/next_small.png}" title="Empezar"/>
+			</a>
+		</div>
+	</section>
+</body>
+</html>

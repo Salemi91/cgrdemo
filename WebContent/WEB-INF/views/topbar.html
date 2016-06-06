@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="topbar">
+		<div class="topbar-items">
+			<div id="home" class="topbar-item toolTip" th:title="@{'Home'}">
+				<a th:href="@{/}">
+					<img alt="HOME" src="/images/icons/home.png" th:src="@{/images/icons/home.png}" title="Home"/>
+				</a>
+<!-- 				<img alt="home" src="/images/icons/home.png" th:src="@{/images/icons/home.png}" /> -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>
